@@ -64,7 +64,8 @@ public class MainActivity extends Activity implements SoftInputCallback, LayoutE
     }
 
     private void updateDisplayProps() {
-        Display display = getDisplay();
+        Display display;
+        if(Build.VERSION.SDK_INT >= 30) { display = getDisplay(); }else { display = getWindowManager().getDefaultDisplay(); }
         assert display != null;
         Point size = new Point();
         if(Build.VERSION.SDK_INT >= 30) {
